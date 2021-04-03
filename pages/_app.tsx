@@ -1,21 +1,22 @@
-import * as React from "react";
-import {AppProps} from "next/app";
-import "../style.css";
-import {Provider} from "react-redux";
-import {useStore} from "../store/store";
-import Head from "next/head";
+import * as React from 'react';
+import { AppProps } from 'next/app';
+import '../style.css';
+import Head from 'next/head';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const store = useStore(pageProps.initialReduxState);
-
   return (
-    <Provider store={store}>
+    <>
       <Head>
-        <title>Kiwi dApp</title>
+        <title>Swan.cash</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Component {...pageProps} />
-    </Provider>
-  )
+    </>
+  );
 }

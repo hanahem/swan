@@ -5,11 +5,13 @@
 @tailwind utilities;
 
 @layer base {
-    html, body, #__next {
-        @apply m-0 h-full;
-        /*color: #98405f;*/
-    }
-    a {
-        @apply text-green-500;
-    }
+  html,
+  body,
+  #__next {
+    @apply m-0 h-full;
+    font-family: 'Open Sans', sans-serif;
+  }
+  a {
+    @apply underline;
+  }
 }
