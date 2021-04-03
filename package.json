@@ -8,6 +8,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@paybutton/react": "^1.1.0",
     "@types/styled-components": "^5.1.9",
     "axios": "^0.21.1",
     "next": "latest",

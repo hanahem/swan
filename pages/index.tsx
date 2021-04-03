@@ -1,4 +1,5 @@
 import React from 'react';
+import Donate from '../components/Donate';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ProjectsList from '../components/ProjectsList';
@@ -12,6 +13,7 @@ const IndexPage = () => {
       >
         <Header />
         <ProjectsList />
+        <Donate />
         <Footer />
       </div>
     </FilterProvider>

@@ -67,6 +67,7 @@ export const CATEGORIES: Category[] = [
 export const API_URI = 'https://jsonpad.io/api/v1.0/lists/projects';
 
 export const fetcher = (url: string) =>
+
   axios
     .get(url, {
       auth: {
