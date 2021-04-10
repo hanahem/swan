@@ -17,11 +17,18 @@ const Header: FC = () => {
         <a className={pathname === '/' ? 'font-bold text-brand-500' : ''} href={'/'}>
           {'All Listings'}
         </a>
-        <a className={pathname === '/about' ? 'font-bold text-brand-500' : ''} href={'/'}>
+        <a
+          href={'https://read.cash/@hanahem/swancash-the-bch-projects-aggregator-b7cf9882'}
+          target={'_blank'}
+          rel={'noreferrer'}
+        >
           {'About'}
         </a>
+        <a className={pathname === '/updates' ? 'font-bold text-brand-500' : ''} href={'/updates'}>
+          {'Latest updates'}
+        </a>
         <a
-          className={pathname === '/submit' ? 'font-bold text-brand-500' : ''}
+          className={pathname === '/submit' ? 'font-bold text-brand-500' : 'font-bold'}
           href={'https://forms.gle/eKgXMVTbu2eeb92i9'}
           target={'_blank'}
           rel={'noreferrer'}
@@ -29,7 +36,7 @@ const Header: FC = () => {
           {'Submit Yours'}
         </a>
       </div>
-      <Categories />
+      {pathname === '/' ? <Categories /> : null}
     </div>
   );
 };

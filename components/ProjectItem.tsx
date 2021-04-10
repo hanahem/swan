@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, {FC, SyntheticEvent, useState} from 'react';
 import { Category, Project } from '../types';
-import { CATEGORIES } from '../utils/constants';
+import { CATEGORIES, numDaysBetween } from '../utils/constants';
 import styled from 'styled-components';
 import { CatButton } from './CategoryItem';
 
@@ -39,22 +39,37 @@ type Props = {
 
 const ProjectItem: FC<Props> = ({ item }) => {
   const { title, image, category, description, url, twitter } = item?.data;
+  const isNew = numDaysBetween(new Date(), new Date(item?.created)) <= 5;
 
   const colors = CATEGORIES.find(
     (cat: Category) => cat.key.toLowerCase() === category.toLowerCase(),
   )?.colors;
 
   const [showBtn, setShowBtn] = useState(false);
+
   return (
     <div
       onMouseEnter={() => setShowBtn(true)}
       onMouseLeave={() => setShowBtn(false)}
       className={'p-5 border border-gray-200 rounded-lg hover:shadow-lg cursor-pointer relative'}
     >
+      {isNew ? (
+        <p className={`absolute top-2 right-2 text-xs font-bold text-red-500`}>NEW🔥</p>
+      ) : null}
       <div className={`flex justify-start items-center mb-2`}>
         <div className={'h-14 w-14 rounded-full m-1 flex justify-center items-center'}>
           {image ? (
-            <img alt={title} src={image} className={`object-contain`} />
+            <img
+              alt={title}
+              src={image}
+              className={`object-contain`}
+              onError={(e: SyntheticEvent) => {
+                // @ts-ignore
+                e.target.onerror = null;
+                // @ts-ignore
+                e.target.src = '/favicon.png';
+              }}
+            />
           ) : (
             <GradientCircle colors={colors as string[]} size={'100%'} />
           )}

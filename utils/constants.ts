@@ -67,7 +67,6 @@ export const CATEGORIES: Category[] = [
 export const API_URI = 'https://jsonpad.io/api/v1.0/lists/projects';
 
 export const fetcher = (url: string) =>
-
   axios
     .get(url, {
       auth: {
@@ -75,7 +74,12 @@ export const fetcher = (url: string) =>
         password: process.env.API_PASS as string,
       },
       params: {
-        page_size: 100
-      }
+        page_size: 100,
+      },
     })
     .then((res: any) => res.data);
+
+export const numDaysBetween = (d1: Date, d2: Date) => {
+  let diff = Math.abs(d1.getTime() - d2.getTime());
+  return diff / (1000 * 60 * 60 * 24);
+};

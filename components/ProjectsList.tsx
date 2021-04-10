@@ -105,9 +105,14 @@ const ProjectsList: FC = () => {
         <div
           className={`grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 self-center sm:mx-0 mx-6`}
         >
-          {items?.map((item: Project) => (
-            <ProjectItem item={item} key={item.id} />
-          ))}
+          {items
+            ?.sort(
+              (a: Project, b: Project) =>
+                new Date(b.created).getTime() - new Date(a.created).getTime(),
+            )
+            .map((item: Project) => (
+              <ProjectItem item={item} key={item.id} />
+            ))}
         </div>
       )}
     </div>
